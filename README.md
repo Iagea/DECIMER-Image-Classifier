@@ -1,4 +1,4 @@
-# CNN chem-not_chem model
+# DECIMER Image Classifier
 
 This model was built using EfficientNetB0 as a base model, using transfer learning and fine tuning it.
 
