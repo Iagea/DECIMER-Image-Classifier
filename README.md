@@ -8,6 +8,19 @@ This model's aim is to classify whether or not an image is a chemical structure 
 
 It gives a prediction between 0 and 1 where 0 means it is a chemical structure and 1 means it is not. The data to constract the model will be available in Zenodo. 
 
+## Performance
+
+The model was train on 10905116 images, validated on 2179798 images and tested on 544946 images.
+
+From the results on the test set, we computed the AUC and the Youden index (on the image below). Using the prediction threshold marked by the Youden index, **0.000089**, we achieved the following performance metrics:
+
+<p align="center"> MCC = 0.989944</p>
+<p align="center">Accuracy = 0.994968</p>
+<p align="center">Sensitivity = 0.993049</p>
+<p align="center">Specificity = 0.996888</p>
+
+<img src='./DECIMER-Image-classifier_AUC_J.png'>
+
 ## Model construction
 
 The model construction script is available on the **model_construction** folder with comments for every step taken.
