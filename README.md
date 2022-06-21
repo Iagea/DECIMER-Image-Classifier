@@ -10,7 +10,7 @@ It gives a prediction between 0 and 1 where 0 means it is a chemical structure a
 
 ## Performance
 
-The model was train on 10905116 images, validated on 2179798 images and tested on 544946 images.
+The model was train on 10905116 images, validated on 2179798 images and tested on 544946 images. It took 52h and 15 minutes and 17GB on a Tesla V100-PCIE-32GB GPU.
 
 From the results on the test set, we computed the AUC and the Youden index (on the image below). Using the prediction threshold marked by the Youden index, **0.000089**, we achieved the following performance metrics:
 
