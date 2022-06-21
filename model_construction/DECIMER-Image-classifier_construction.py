@@ -145,7 +145,7 @@ history_fine = model.fit(train_dataset,
                          validation_data=validation_dataset)
 
 # Save the model
-model.save(save_folder+'DECIMER-Image-classifier_EfficientNetB0_1_ntf_2_epochs_fine_tuned')
+model.save(save_folder+'model')
 
 # Generate plot to compare before and after the fine tuning of the base model
 acc += history_fine.history['accuracy']
