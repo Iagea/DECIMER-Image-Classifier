@@ -3,6 +3,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-blue.svg)](https://GitHub.com/iagea/DECIMER-Image-Classifier/graphs/commit-activity)
 [![GitHub issues](https://img.shields.io/github/issues/iagea/DECIMER-Image-Classifier.svg)](https://GitHub.com/iagea/DECIMER-Image-Classifier/issues/)
 [![GitHub contributors](https://img.shields.io/github/contributors/iagea/DECIMER-Image-Classifier.svg)](https://GitHub.com/iagea/DECIMER-Image-Classifier/graphs/contributors/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6670746.svg)](https://doi.org/10.5281/zenodo.6670746)
 
 This model's aim is to classify whether or not an image is a chemical structure or not. It was built using EfficientNetB0 as a base model, using transfer learning and fine tuning it.
 
