@@ -20,7 +20,8 @@ setuptools.setup(
     license="MIT",
     install_requires=[
         "tensorflow==2.7.0",
-        "ipyplot"
+        "ipyplot",
+        "pillow>=8.2.0"
     ],
     package_data={
         "decimer_image_classifier": ["*.*", "model/*.*", "model/*/*.*"]},
