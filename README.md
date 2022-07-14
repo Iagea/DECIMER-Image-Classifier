@@ -11,7 +11,7 @@ It gives a prediction between 0 and 1 where 0 means it is a chemical structure a
 
 ## Performance
 
-The model was train on 10905114 images, validated on 2179798 images and tested on 544946 images. It took 52h and 15 minutes and 17GB on a Tesla V100-PCIE-32GB GPU.
+The model was trained on 10905114 images, validated on 2179798 images and tested on 544946 images. It took 52h and 15 minutes and 17GB on a Tesla V100-PCIE-32GB GPU.
 
 From the results on the test set, we computed the AUC and the Youden index (on the image below). Using the prediction threshold marked by the Youden index, **0.000089**, we achieved the following performance metrics:
 
@@ -25,6 +25,24 @@ From the results on the test set, we computed the AUC and the Youden index (on t
 ## Model construction
 
 The model construction script is available on the **model_construction** folder with comments for every step taken.
+
+## Installation
+- Simply run 
+`pip install git+https://github.com/Iagea/DECIMER-Image-Classifier`
+
+## Usage
+```
+from decimer_image_classifier import DecimerImageClassifier
+
+# Instantiate DecimerImageClassifier (this loads the model and all needed settings)
+decimer_classifier = DecimerImageClassifier()
+
+# If you just need a statement about the image at image_path being a chemical structure or not:
+result = decimer_classifier.is_chemical_structure(image_path)
+
+# If you want the classification score (value between 0 (-> chemical structure) and 1 (-> no chemical structure))
+score = decimer_classifier.get_classifier_score(image_path)
+```
 
 ## Example
 
