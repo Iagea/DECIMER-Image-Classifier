@@ -19,7 +19,7 @@ class DecimerImageClassifier:
     def is_chemical_structure(self,
                               img: Image = False,
                               img_path: str = False,
-                              threshold: float = 0.1
+                              threshold: float = 0.000089
                               ) -> bool:
         """
         This function determines whether or not a given image (given as
