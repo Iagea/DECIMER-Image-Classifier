@@ -5,13 +5,15 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/iagea/DECIMER-Image-Classifier.svg)](https://GitHub.com/iagea/DECIMER-Image-Classifier/graphs/contributors/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6670746.svg)](https://doi.org/10.5281/zenodo.6670746)
 
-This model's aim is to classify whether or not an image is a chemical structure or not. It was built using EfficientNetB0 as a base model, using transfer learning and fine tuning it.
+[![GitHub Logo](https://github.com/Iagea/DECIMER-Image-Classifier/blob/main/DECIMER_IC.png?raw=true)](https://github.com/Iagea/DECIMER-Image-Classifier)
 
-It gives a prediction between 0 and 1 where 0 means it is a chemical structure and 1 means it is not. The data used to build the model is available in Zenodo. 
+- This model aims to classify whether or not an image is a chemical structure. It was built using EfficientNetB0 as a base model, using transfer learning and fine-tuning it.
+
+- It gives a prediction between 0 and 1 where 0 means it is a chemical structure and 1 means it is not. The data used to build the model is available in Zenodo. 
 
 ## Performance
 
-The model was trained on 10905114 images, validated on 2179798 images and tested on 544946 images. It took 52h and 15 minutes and 17GB on a Tesla V100-PCIE-32GB GPU.
+The model was trained on 10905114 images, validated on 2179798 images and tested on 544946 images. It took 52h and 15 minutes and 17GB on a Tesla V100-PCI-E-32GB GPU.
 
 From the results on the test set, we computed the AUC and the Youden index (on the image below). Using the prediction threshold marked by the Youden index, **0.000089**, we achieved the following performance metrics:
 
@@ -46,5 +48,15 @@ score = decimer_classifier.get_classifier_score(image_path)
 
 ## Example
 
-An example with 10 images from the test set that will be available in Zenodo as well is present in the form of a Jupyter notebook on the folder **examples**.
+An example with 10 images from the test set that will be available in Zenodo is also present in the form of a Jupyter notebook in the folder **examples**.
+
+## Author: [M. Isabel Agea](https://iagea.github.io)
+
+## Project Website:
+
+- A web application implementation is available at [decimer.ai](https://decimer.ai), implemented by [Otto Brinkhaus](https://github.com/OBrink)
+
+
+## Research Group
+[![GitHub Logo](https://github.com/Kohulan/DECIMER-Image-to-SMILES/blob/master/assets/CheminfGit.png)](https://cheminf.uni-jena.de)
 

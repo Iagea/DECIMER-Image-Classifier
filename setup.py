@@ -18,13 +18,8 @@ setuptools.setup(
     url="https://github.com/Iagea/DECIMER-Image-Classifier",
     packages=setuptools.find_packages(),
     license="MIT",
-    install_requires=[
-        "tensorflow==2.7.0",
-        "ipyplot",
-        "pillow>=8.2.0"
-    ],
-    package_data={
-        "decimer_image_classifier": ["*.*", "model/*.*", "model/*/*.*"]},
+    install_requires=["tensorflow==2.7.0", "ipyplot", "pillow>=8.2.0"],
+    package_data={"decimer_image_classifier": ["*.*", "model/*.*", "model/*/*.*"]},
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",

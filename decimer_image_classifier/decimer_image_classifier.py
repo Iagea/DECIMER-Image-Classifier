@@ -9,18 +9,16 @@ class DecimerImageClassifier:
 
     def __init__(self):
         # Load model
-        model_path = os.path.join(os.path.split(__file__)[0], 'model')
+        model_path = os.path.join(os.path.split(__file__)[0], "model")
         self.model = keras.models.load_model(model_path)
         # Establish GPU growth
-        gpus = tf.config.experimental.list_physical_devices('GPU')
+        gpus = tf.config.experimental.list_physical_devices("GPU")
         for gpu in gpus:
             tf.config.experimental.set_memory_growth(gpu, True)
 
-    def is_chemical_structure(self,
-                              img: Image = False,
-                              img_path: str = False,
-                              threshold: float = 0.000089
-                              ) -> bool:
+    def is_chemical_structure(
+        self, img: Image = False, img_path: str = False, threshold: float = 0.000089
+    ) -> bool:
         """
         This function determines whether or not a given image (given as
         PIL.Image or as a path of an image (str)) is a chemical structure
@@ -41,10 +39,7 @@ class DecimerImageClassifier:
         else:
             return False
 
-    def get_classifier_score(self,
-                             img: Image = False,
-                             img_path: str = False
-                             ) -> float:
+    def get_classifier_score(self, img: Image = False, img_path: str = False) -> float:
         """
         Function to compute the classifier score for a particular image.
 
@@ -66,10 +61,7 @@ class DecimerImageClassifier:
         score = tf.nn.sigmoid(predictions[0])
         return score.numpy()[0]
 
-    def get_resized_grayscale_image(self,
-                                    img: Image,
-                                    desired_size: int = 224
-                                    ) -> Image:
+    def get_resized_grayscale_image(self, img: Image, desired_size: int = 224) -> Image:
         """
         This function takes a PIL.Image object, converts it to grayscale and
         resizes it to a square image of length/height a given desired_size.
@@ -83,15 +75,15 @@ class DecimerImageClassifier:
         Returns:
             Image: Resized grayscale image
         """
-        grayscale_image = img.convert('L')
+        grayscale_image = img.convert("L")
         old_size = img.size
-        if(old_size[0] or old_size[1] != desired_size):
-            ratio = float(desired_size)/max(old_size)
-            new_size = tuple([int(x*ratio) for x in old_size])
-            grayscale_image = grayscale_image.resize(new_size,
-                                                     Image.LANCZOS)
-        resized_image = Image.new('L', (desired_size, desired_size), 'white')
-        resized_image.paste(grayscale_image,
-                            ((desired_size-new_size[0])//2,
-                             (desired_size-new_size[1])//2))
+        if old_size[0] or old_size[1] != desired_size:
+            ratio = float(desired_size) / max(old_size)
+            new_size = tuple([int(x * ratio) for x in old_size])
+            grayscale_image = grayscale_image.resize(new_size, Image.LANCZOS)
+        resized_image = Image.new("L", (desired_size, desired_size), "white")
+        resized_image.paste(
+            grayscale_image,
+            ((desired_size - new_size[0]) // 2, (desired_size - new_size[1]) // 2),
+        )
         return resized_image
