@@ -107,7 +107,9 @@ class DecimerImageClassifier:
         )
         return resized_image
 
-    def _get_RGB_grayscale_image(self, img: Image) -> Image:
+    def _get_RGB_grayscale_image(
+        self, img: Image, save_modified_rgba: bool = False
+    ) -> Image:
         """
         This function takes a PIL.Image object, and returns the
         same Image object as a grayscale RGB image (no colours,
@@ -125,6 +127,7 @@ class DecimerImageClassifier:
             orig_img.load()
             img = Image.new("RGB", orig_img.size, (255, 255, 255))
             img.paste(orig_img, mask=orig_img.split()[3])
-            img.save("caffeine_mod.png")
+            if save_modified_rgba:
+                img.save("caffeine_mod.png")
         img = img.convert("L").convert("RGB")
         return img
