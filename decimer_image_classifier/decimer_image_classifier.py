@@ -9,8 +9,7 @@ class DecimerImageClassifier:
     """Class that wraps up the functionalities of the image classifier"""
 
     def __init__(self):
-        # Establish GPU growth, load default GPU
-        os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+        # Establish GPU growth
         gpus = tf.config.experimental.list_physical_devices("GPU")
         for gpu in gpus:
             tf.config.experimental.set_memory_growth(gpu, True)
@@ -18,7 +17,7 @@ class DecimerImageClassifier:
         model_path = os.path.join(os.path.split(__file__)[0], "model")
         self.model = keras.models.load_model(model_path)
 
-    def is_chemical_structure(self, img=False, threshold: float = 0.000089) -> bool:
+    def is_chemical_structure(self, img=None, threshold: float = 0.000089) -> bool:
         """
         This function determines whether or not a given image (given as
         PIL.Image or as a path of an image (str)) is a chemical structure
@@ -40,7 +39,7 @@ class DecimerImageClassifier:
 
     def get_classifier_score(
         self,
-        img=False,
+        img=None,
     ) -> float:
         """
         Function to compute the classifier score for a particular image.
@@ -52,7 +51,7 @@ class DecimerImageClassifier:
         Returns:
             score (float): the image predicted score.
         """
-        if type(img) == str:
+        if isinstance(img, str):
             img = Image.open(img)
         img = self._get_resized_grayscale_image(img)
         img_array = keras.preprocessing.image.img_to_array(img)
@@ -97,10 +96,12 @@ class DecimerImageClassifier:
             Image: Resized grayscale image
         """
         old_size = img.size
-        if old_size[0] or old_size[1] != desired_size:
+        if old_size[0] != desired_size or old_size[1] != desired_size:
             ratio = float(desired_size) / max(old_size)
             new_size = tuple([int(x * ratio) for x in old_size])
             img = img.resize(new_size, Image.LANCZOS)
+        else:
+            new_size = old_size
         resized_image = Image.new("RGB", (desired_size, desired_size), "white")
         resized_image.paste(
             img, ((desired_size - new_size[0]) // 2, (desired_size - new_size[1]) // 2)
